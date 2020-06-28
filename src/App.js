@@ -16,11 +16,6 @@ function App() {
   return (
     <div>
       <div>
-        <head>
-          <title>Farm to Cup Coffee Toasters</title>
-        </head>
-      </div>
-      <div>
         <h1 style={styles.text}>Specialty Coffee</h1>
         <h4 style={styles.text}> Farm to cup direct trade coffee toasters</h4>
         <img
