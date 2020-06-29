@@ -7,7 +7,7 @@ const styles = {
     marginRight: "auto",
     marginTop: "5%",
     marginBottom: "5%",
-    width: "50%",
+    width: "25%",
   },
 };
 

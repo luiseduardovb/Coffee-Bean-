@@ -1,21 +1,12 @@
 import React from "react";
 
-// Data
-import items from "./items";
+//Components
+import CoffeeList from "./components/CoffeeList";
 
 //Styling
 import styles from "./styles";
 
 function App() {
-  const itemsList = items.map((item) => (
-    <div key={items.id}>
-      <img style={styles.coffeeImage} alt={items.name} src={item.image} />
-      <p style={styles.text}>{item.name}</p>
-      <p style={styles.text}>{item.description}</p>
-      <p style={styles.text}>{item.price} KD</p>
-    </div>
-  ));
-
   return (
     <div>
       <div>
@@ -28,7 +19,7 @@ function App() {
         />
       </div>
 
-      <div>{itemsList}</div>
+      <CoffeeList />
     </div>
   );
 }
