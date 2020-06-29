@@ -1,18 +1,20 @@
 import React from "react";
 
-const styles = {
-  text: { textAlign: "center" },
-  coffeeImage: {
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginTop: "5%",
-    marginBottom: "5%",
-    width: "50%",
-  },
-};
+// Data
+import items from "./items";
+
+//Styling
+import styles from "./styles";
 
 function App() {
+  const itemsList = items.map((item) => (
+    <div style={styles.item} key={items.id}>
+      <img style={styles.coffeeImage} alt={items.name} src={item.image} />
+      <p style={styles.text}>{item.name}</p>
+      <p style={styles.text}>{item.price} KD</p>
+    </div>
+  ));
+
   return (
     <div>
       <div>
@@ -24,33 +26,8 @@ function App() {
           style={styles.coffeeImage}
         />
       </div>
-      <div>
-        <img
-          alt="Honduran Coffee"
-          src="https://www.mtwhitneycoffee.com/mm5/graphics/00000001/coffee-beans-in-jute-sack-31954160.jpg"
-          style={styles.coffeeImage}
-        />
-        <p style={styles.text}>La Paz, Honduras. Organic Medium Roast</p>
-        <p style={styles.text}>13 KD</p>
-      </div>
-      <div>
-        <img
-          alt="Guatemalan Coffee"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Coffee_beans2.jpg/220px-Coffee_beans2.jpg"
-          style={styles.coffeeImage}
-        />
-        <p style={styles.text}>Antigua, Guatemala. Dark Roast</p>
-        <p style={styles.text}>10 KD</p>
-      </div>
-      <div>
-        <img
-          alt="El Salvador Coffee"
-          src="https://m.media-amazon.com/images/I/51FX+YpsHiL.jpg"
-          style={styles.coffeeImage}
-        />
-        <p style={styles.text}>La Joya, El Salvador. Light Roast</p>
-        <p style={styles.text}>11 KD</p>
-      </div>
+
+      <div>{itemsList}</div>
     </div>
   );
 }
