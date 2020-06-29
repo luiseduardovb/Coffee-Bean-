@@ -8,9 +8,10 @@ import styles from "./styles";
 
 function App() {
   const itemsList = items.map((item) => (
-    <div style={styles.item} key={items.id}>
+    <div key={items.id}>
       <img style={styles.coffeeImage} alt={items.name} src={item.image} />
       <p style={styles.text}>{item.name}</p>
+      <p style={styles.text}>{item.description}</p>
       <p style={styles.text}>{item.price} KD</p>
     </div>
   ));
