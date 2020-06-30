@@ -1,7 +1,7 @@
 import React from "react";
 
 // Styling
-import styles from "../styles";
+import { ListWrapper } from "../styles";
 
 // Components
 import CoffeeItem from "./CoffeeItem";
@@ -14,7 +14,7 @@ const CoffeeList = () => {
     <CoffeeItem coffee={coffee} key={coffees.id} />
   ));
 
-  return <div style={styles.styles}>{coffeeList}</div>;
+  return <ListWrapper>{coffeeList}</ListWrapper>;
 };
 
 export default CoffeeList;

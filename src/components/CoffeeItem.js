@@ -1,19 +1,15 @@
 import React from "react";
 
 //Styling
-import styles from "../styles";
+import { CoffeeWraper } from "../styles";
 
 const CoffeeItem = (props) => {
   return (
-    <div>
-      <img
-        src={props.coffee.image}
-        alt={props.coffee.name}
-        style={styles.coffeeImage}
-      />
-      <p style={styles.text}>{props.coffee.name}</p>
-      <p style={styles.text}>{props.coffee.price} KD</p>
-    </div>
+    <CoffeeWraper>
+      <img alt={props.coffee.name} src={props.coffee.image} />
+      <p>{props.coffee.name}</p>
+      <p className="coffee-price">{props.coffee.price} KD</p>
+    </CoffeeWraper>
   );
 };
 
