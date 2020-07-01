@@ -47,9 +47,16 @@ const ListWrapper = styled.div`
 `;
 const ThemeButton = styled.button`
   font-size: 1em;
-  margin: 1.25em;
-  padding: 0.25em 1em;
-  border-radius: 3px;
+   display: inline-block;
+   padding: 0.8em 2em;
+   margin: 0 0.8em 0.8em 0;
+   border-radius: 2em;
+   box-sizing: border-box;
+   text-decoration: none;
+   font-family: "Roboto", sans-serif;
+   font-weight: 900;
+   text-align: center;
+   transition: all 0.2s;
   background-color: ${(props) => props.theme.mainColor};
   color: ${(props) => props.theme.backgroundColor};
 `;
