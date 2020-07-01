@@ -1,24 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 
 //Components
 import CoffeeList from "./components/CoffeeList";
 
 //Styling
-
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./styles";
-import { Title, Description, CoffeeImage } from "./styles";
+import { Title, Description, CoffeeImage, ThemeButton } from "./styles";
 
 const theme = {
-  mainColor: "#8b104e",
-  backgroundColor: "#f69314",
-  blue: "#ab0e86",
+  lightTheme: {
+    mainColor: "#8b104e",
+    backgroundColor: "#f69314",
+    blue: "#ab0e86",
+  },
+
+  darkTheme: {
+    mainColor: "#f69314",
+    backgroundColor: "#8b104e",
+    blue: "#ab0e86",
+  },
+
+  alternateTheme: {
+    mainColor: "#94fc13",
+    backgroundColor: "#f7ff56",
+    blue: "#ab0e86",
+  },
 };
 
 function App() {
+  let [currentTheme, setCurrentTheme] = useState("lightTheme");
+  const toggleTheme = () =>
+    setCurrentTheme(currentTheme === "lightTheme" ? "darkTheme" : "lightTheme");
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
+      <ThemeButton onClick={toggleTheme}>
+        {currentTheme === "lightTheme" ? "Dark Mode" : "Light Mode"}
+      </ThemeButton>
       <Title>Specialty Coffee</Title>
       <Description>Farm to Cup direct trade</Description>
       <CoffeeImage
