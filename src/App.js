@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import CoffeeList from "./components/CoffeeList";
 
 //Styling
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider, withTheme } from "styled-components";
 import { GlobalStyle } from "./styles";
 import { Title, Description, CoffeeImage, ThemeButton } from "./styles";
 
@@ -12,24 +12,20 @@ const theme = {
   lightTheme: {
     mainColor: "#8b104e",
     backgroundColor: "#f69314",
-    blue: "#ab0e86",
+    some: "#083358",
   },
 
   darkTheme: {
     mainColor: "#f69314",
     backgroundColor: "#8b104e",
-    blue: "#ab0e86",
-  },
-
-  alternateTheme: {
-    mainColor: "#94fc13",
-    backgroundColor: "#f7ff56",
-    blue: "#ab0e86",
+    some: "#083358",
+    red: "#ff0b55",
   },
 };
 
 function App() {
   let [currentTheme, setCurrentTheme] = useState("lightTheme");
+
   const toggleTheme = () =>
     setCurrentTheme(currentTheme === "lightTheme" ? "darkTheme" : "lightTheme");
 

@@ -21,14 +21,17 @@ const CoffeeWraper = styled.div`
     text-align: center;
 
     &.coffee-price {
-      color: ${(props) => props.theme.blue};
+      color: ${(props) => props.theme.some};
     }
   }
+`;
+const DeleteButtonStyled = styled.p`
+  color: ${(props) => props.theme.red};
 `;
 
 const Description = styled.h4`
   text-align: center;
-  color: ${(props) => props.theme.blue};
+  color: ${(props) => props.theme.some};
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -69,6 +72,7 @@ const Title = styled.h1`
 export {
   Title,
   Description,
+  DeleteButtonStyled,
   CoffeeImage,
   ListWrapper,
   CoffeeWraper,
