@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 // Styling
 import { ListWrapper } from "../styles";
@@ -6,19 +6,14 @@ import { ListWrapper } from "../styles";
 // Components
 import CoffeeItem from "./CoffeeItem";
 
-//Data
-import coffees from "../coffees";
-
-const CoffeeList = () => {
-  const [_coffees, setCoffees] = useState(coffees);
-
-  const deleteCoffee = (coffeeId) => {
-    const updatedCoffees = _coffees.filter((coffee) => coffee.id !== +coffeeId);
-    setCoffees(updatedCoffees);
-  };
-
-  const coffeeList = _coffees.map((coffee) => (
-    <CoffeeItem coffee={coffee} key={coffee.id} deleteCoffee={deleteCoffee} />
+const CoffeeList = (props) => {
+  const coffeeList = props.coffees.map((coffee) => (
+    <CoffeeItem
+      coffee={coffee}
+      key={coffee.id}
+      deleteCoffee={props.deleteCoffee}
+      selectCoffee={props.selectCoffee}
+    />
   ));
 
   return <ListWrapper>{coffeeList}</ListWrapper>;

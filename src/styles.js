@@ -28,12 +28,26 @@ const CoffeeWraper = styled.div`
 const DeleteButtonStyled = styled.p`
   color: ${(props) => props.theme.red};
 `;
-
 const Description = styled.h4`
   text-align: center;
   color: ${(props) => props.theme.some};
 `;
 
+const DetailWrapper = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+
+  img {
+    width: 40%;
+    float: center;
+  }
+
+  p {
+    vertical-align: left;
+  }
+`;
 const GlobalStyle = createGlobalStyle`
   body {
     color: ${(props) => props.theme.mainColor} ;
@@ -70,12 +84,13 @@ const Title = styled.h1`
 `;
 
 export {
-  Title,
+  CoffeeImage,
+  CoffeeWraper,
   Description,
   DeleteButtonStyled,
-  CoffeeImage,
-  ListWrapper,
-  CoffeeWraper,
+  DetailWrapper,
   GlobalStyle,
+  ListWrapper,
   ThemeButton,
+  Title,
 };
