@@ -11,7 +11,8 @@ const CoffeeList = (props) => {
   const [query, setQuery] = useState("");
 
   const coffeeList = props.coffees
-    .filter((coffee) => coffee.name.includes(query))
+
+    .filter((coffee) => coffee.name.toLowerCase().includes(query.toLowerCase()))
     .map((coffee) => (
       <CoffeeItem
         coffee={coffee}
