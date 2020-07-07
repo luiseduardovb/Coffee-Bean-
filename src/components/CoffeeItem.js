@@ -1,14 +1,13 @@
 import React from "react";
 
+//Componenets
+import DeleteButton from "./buttons/DeleteButton";
+
 //Styling
-import { CoffeeWraper, DeleteButtonStyled } from "../styles";
+import { CoffeeWraper } from "../styles";
 
 const CoffeeItem = (props) => {
   const coffee = props.coffee;
-
-  const handleDelete = () => {
-    props.deleteCoffee(coffee.id);
-  };
 
   const handleSelect = () => {
     props.selectCoffee(coffee.id);
@@ -19,7 +18,7 @@ const CoffeeItem = (props) => {
       <img alt={coffee.name} src={coffee.image} onClick={handleSelect} />
       <p>{coffee.name}</p>
       <p className="coffee-price">{coffee.price} KD</p>
-      <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>
+      <DeleteButton coffeeId={coffee.id} deleteCoffee={props.deleteCoffee} />
     </CoffeeWraper>
   );
 };

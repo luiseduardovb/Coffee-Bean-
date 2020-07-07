@@ -29,7 +29,6 @@ const theme = {
 };
 
 function App() {
-  // const coffee = coffee[0];
   let [currentTheme, setCurrentTheme] = useState("lightTheme");
   const [coffee, setCoffee] = useState(null);
   const [_coffees, setCoffees] = useState(coffees);
