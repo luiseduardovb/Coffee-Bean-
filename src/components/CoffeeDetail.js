@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 
 //Componenets
 import DeleteButton from "./buttons/DeleteButton";
@@ -8,9 +8,11 @@ import DeleteButton from "./buttons/DeleteButton";
 import { DetailWrapper } from "../styles";
 
 const CoffeeDetail = (props) => {
-  const { coffeeId } = useParams();
+  const { coffeeSlug } = useParams();
 
-  const coffee = props.coffees.find((coffee) => coffee.id === +coffeeId);
+  const coffee = props.coffees.find((coffee) => coffee.slug === coffeeSlug);
+
+  if (!coffee) return <Redirect to="/coffees" />;
 
   return (
     <div>

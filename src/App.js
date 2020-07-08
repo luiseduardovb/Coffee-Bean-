@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router";
-import { Link, useHistory } from "react-router-dom";
 
 //Data
 import coffees from "./coffees";
@@ -9,22 +8,23 @@ import coffees from "./coffees";
 import CoffeeList from "./components/CoffeeList";
 import CoffeeDetail from "./components/CoffeeDetail";
 import Home from "./components/Home";
+import NavBar from "./components/NavBar";
 
 //Styling
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle, ThemeButton } from "./styles";
+import { GlobalStyle } from "./styles";
 
 const theme = {
   lightTheme: {
-    mainColor: "#4aa6b5",
-    backgroundColor: "#ecfafb",
+    mainColor: "#27282f",
+    backgroundColor: "#a8b4c6",
     some: "#19477b",
     red: "#E12F21",
   },
 
   darkTheme: {
-    mainColor: "#ecfafb",
-    backgroundColor: "#4aa6b5",
+    mainColor: "#d0d1d5",
+    backgroundColor: "#27282f",
     some: "#083358",
     red: "#E12F21",
   },
@@ -46,14 +46,9 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
-      <Link to="/coffees" style={{ margin: 10, float: "right" }}>
-        Cookies
-      </Link>
-      <ThemeButton onClick={toggleTheme}>
-        {currentTheme === "lightTheme" ? "Dark Mode" : "Light Mode"}
-      </ThemeButton>
+      <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
       <Switch>
-        <Route path="/coffees/:coffeeId">
+        <Route path="/coffees/:coffeeSlug">
           <CoffeeDetail coffees={_coffees} deleteCoffee={deleteCoffee} />
         </Route>
         <Route path="/coffees">

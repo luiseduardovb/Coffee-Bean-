@@ -11,8 +11,8 @@ const CoffeeItem = (props) => {
   const coffee = props.coffee;
 
   return (
-    <CoffeeWraper>
-      <Link to={`/coffees/${coffee.id}`}>
+    <CoffeeWraper className="col-lg-4 col-md-6 col-sm-6">
+      <Link to={`/coffees/${coffee.slug}`}>
         <img alt={coffee.name} src={coffee.image} />
       </Link>
       <p>{coffee.name}</p>

@@ -10,7 +10,7 @@ const Home = () => {
       <Description>Farm to Cup direct trade</Description>
       <CoffeeImage
         alt="coffee beans"
-        src="https://cdn.shopify.com/s/files/1/1003/7044/files/roasted_coffee_beans_unroasted_coffee_beans_raw_coffee_beans_green_coffee_beans_coffee_roaster_large.jpg?v=1585924052"
+        src="https://www.ncausa.org/portals/56/Images/AboutCoffee/NCA_Web_Large_coffee-beans-history.png?ver=2018-02-28-115401-897"
       />
     </>
   );

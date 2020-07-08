@@ -23,10 +23,10 @@ const CoffeeList = (props) => {
     ));
 
   return (
-    <>
+    <div className="container">
       <SearchBar setQuery={setQuery} />
-      <ListWrapper>{coffeeList}</ListWrapper>
-    </>
+      <ListWrapper className="row">{coffeeList}</ListWrapper>
+    </div>
   );
 };
 
