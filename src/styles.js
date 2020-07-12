@@ -1,6 +1,8 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 
+import { MdAddCircleOutline } from "react-icons/md";
+
 export const CoffeeImage = styled.img`
   padding: 3%;
   width: 100%;
@@ -29,6 +31,17 @@ export const CoffeeWraper = styled.div`
     }
   }
 `;
+
+export const CreateButtonStyled = styled.button`
+  color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.mainColor};
+
+  &:hover {
+    color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.backgroundColor};
+  }
+`;
+
 export const DeleteButtonStyled = styled.p`
   color: ${(props) => props.theme.red};
   text-align: center;
@@ -78,6 +91,10 @@ export const Logo = styled(Link)`
     width: 8rem;
     height: 8rem;
   }
+`;
+
+export const AddButtonStyled = styled(MdAddCircleOutline)`
+  font-size: 2em;
 `;
 
 export const NavItem = styled(NavLink)`

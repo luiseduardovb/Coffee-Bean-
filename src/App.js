@@ -32,8 +32,11 @@ const theme = {
 
 function App() {
   let [currentTheme, setCurrentTheme] = useState("lightTheme");
-
   const [_coffees, setCoffees] = useState(coffees);
+
+  const createCoffee = (newCoffee) => {
+    setCoffees([..._coffees, newCoffee]);
+  };
 
   const deleteCoffee = (coffeeId) => {
     const updatedCoffees = _coffees.filter((coffee) => coffee.id !== coffeeId);
@@ -52,7 +55,11 @@ function App() {
           <CoffeeDetail coffees={_coffees} deleteCoffee={deleteCoffee} />
         </Route>
         <Route path="/coffees">
-          <CoffeeList coffees={_coffees} deleteCoffee={deleteCoffee} />
+          <CoffeeList
+            coffees={_coffees}
+            createCoffee={createCoffee}
+            deleteCoffee={deleteCoffee}
+          />
         </Route>
         <Route exact path="/">
           <Home />

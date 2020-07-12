@@ -1,31 +1,28 @@
 import React, { useState } from "react";
 
-// Styling
-import { ListWrapper } from "../styles";
-
 // Components
+import AddButton from "./buttons/AddButton";
 import CoffeeItem from "./CoffeeItem";
 import SearchBar from "./SearchBar";
 
-const CoffeeList = (props) => {
+// Styling
+import { ListWrapper } from "../styles";
+
+const CoffeeList = ({ coffees, createCoffee, deleteCoffee }) => {
   const [query, setQuery] = useState("");
 
-  const coffeeList = props.coffees
+  const coffeeList = coffees
 
     .filter((coffee) => coffee.name.toLowerCase().includes(query.toLowerCase()))
     .map((coffee) => (
-      <CoffeeItem
-        coffee={coffee}
-        key={coffee.id}
-        deleteCoffee={props.deleteCoffee}
-        selectCoffee={props.selectCoffee}
-      />
+      <CoffeeItem coffee={coffee} key={coffee.id} deleteCoffee={deleteCoffee} />
     ));
 
   return (
     <div className="container">
       <SearchBar setQuery={setQuery} />
       <ListWrapper className="row">{coffeeList}</ListWrapper>
+      <AddButton createCoffee={createCoffee} />
     </div>
   );
 };

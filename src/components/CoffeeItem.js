@@ -7,9 +7,7 @@ import DeleteButton from "./buttons/DeleteButton";
 //Styling
 import { CoffeeWraper } from "../styles";
 
-const CoffeeItem = (props) => {
-  const coffee = props.coffee;
-
+const CoffeeItem = ({ coffee, deleteCoffee }) => {
   return (
     <CoffeeWraper className="col-lg-4 col-md-6 col-sm-6">
       <Link to={`/coffees/${coffee.slug}`}>
@@ -17,7 +15,7 @@ const CoffeeItem = (props) => {
       </Link>
       <p>{coffee.name}</p>
       <p className="coffee-price">{coffee.price} KD</p>
-      <DeleteButton coffeeId={coffee.id} deleteCoffee={props.deleteCoffee} />
+      <DeleteButton coffeeId={coffee.id} deleteCoffee={deleteCoffee} />
     </CoffeeWraper>
   );
 };
