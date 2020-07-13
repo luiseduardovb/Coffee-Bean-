@@ -1,14 +1,17 @@
 import React from "react";
+import { observer } from "mobx-react";
+//Stores
+import coffeeStore from "../../stores/coffeeStore";
 
 //Styling
 import { DeleteButtonStyled } from "../../styles";
 
-const DeleteButton = (props) => {
+const DeleteButton = ({ coffeeId }) => {
   const handleDelete = () => {
-    props.deleteCoffee(props.coffeeId);
+    coffeeStore.deleteCoffee(coffeeId);
   };
 
   return <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>;
 };
 
-export default DeleteButton;
+export default observer(DeleteButton);

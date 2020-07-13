@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router";
 
-//Data
-import coffees from "./coffees";
-
 //Components
 import CoffeeList from "./components/CoffeeList";
 import CoffeeDetail from "./components/CoffeeDetail";
@@ -32,16 +29,6 @@ const theme = {
 
 function App() {
   let [currentTheme, setCurrentTheme] = useState("lightTheme");
-  const [_coffees, setCoffees] = useState(coffees);
-
-  const createCoffee = (newCoffee) => {
-    setCoffees([..._coffees, newCoffee]);
-  };
-
-  const deleteCoffee = (coffeeId) => {
-    const updatedCoffees = _coffees.filter((coffee) => coffee.id !== coffeeId);
-    setCoffees(updatedCoffees);
-  };
 
   const toggleTheme = () =>
     setCurrentTheme(currentTheme === "lightTheme" ? "darkTheme" : "lightTheme");
@@ -52,14 +39,10 @@ function App() {
       <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
       <Switch>
         <Route path="/coffees/:coffeeSlug">
-          <CoffeeDetail coffees={_coffees} deleteCoffee={deleteCoffee} />
+          <CoffeeDetail />
         </Route>
         <Route path="/coffees">
-          <CoffeeList
-            coffees={_coffees}
-            createCoffee={createCoffee}
-            deleteCoffee={deleteCoffee}
-          />
+          <CoffeeList />
         </Route>
         <Route exact path="/">
           <Home />

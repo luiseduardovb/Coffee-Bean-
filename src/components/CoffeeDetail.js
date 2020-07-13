@@ -1,16 +1,22 @@
 import React from "react";
 import { Link, Redirect, useParams } from "react-router-dom";
+import { observer } from "mobx-react";
 
 //Componenets
 import DeleteButton from "./buttons/DeleteButton";
 
+//Stores
+import coffeeStore from "../stores/coffeeStore";
+
 //Styling
 import { DetailWrapper } from "../styles";
 
-const CoffeeDetail = (props) => {
+const CoffeeDetail = () => {
   const { coffeeSlug } = useParams();
 
-  const coffee = props.coffees.find((coffee) => coffee.slug === coffeeSlug);
+  const coffee = coffeeStore.coffees.find(
+    (coffee) => coffee.slug === coffeeSlug
+  );
 
   if (!coffee) return <Redirect to="/coffees" />;
 
@@ -24,10 +30,10 @@ const CoffeeDetail = (props) => {
         <img src={coffee.image} alt={coffee.name} />
         <p>{coffee.description}</p>
         <p>{coffee.price}</p>
-        <DeleteButton coffeeId={coffee.id} deleteCoffee={props.deleteCoffee} />
+        <DeleteButton coffeeId={coffee.id} />
       </DetailWrapper>
     </div>
   );
 };
 
-export default CoffeeDetail;
+export default observer(CoffeeDetail);

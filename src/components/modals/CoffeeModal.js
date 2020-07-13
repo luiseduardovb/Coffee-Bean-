@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import { observer } from "mobx-react";
+
+//Stores
+import coffeeStore from "../../stores/coffeeStore";
 
 //Styling
 import { CreateButtonStyled } from "../../styles";
 
-const CoffeeModal = ({ isOpen, closeModal, createCoffee }) => {
+const CoffeeModal = ({ isOpen, closeModal }) => {
   const [coffee, setCoffee] = useState({
     name: "",
     price: 0,
@@ -18,7 +22,7 @@ const CoffeeModal = ({ isOpen, closeModal, createCoffee }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createCoffee(coffee);
+    coffeeStore.createCoffee(coffee);
     closeModal();
   };
 
@@ -34,6 +38,7 @@ const CoffeeModal = ({ isOpen, closeModal, createCoffee }) => {
           <div className="col-6">
             <label>Name</label>
             <input
+              required
               type="text"
               className="form-control"
               name="name"
@@ -43,6 +48,7 @@ const CoffeeModal = ({ isOpen, closeModal, createCoffee }) => {
           <div className="col-6">
             <label>Price</label>
             <input
+              required
               type="number"
               min="1"
               className="form-control"
@@ -54,6 +60,7 @@ const CoffeeModal = ({ isOpen, closeModal, createCoffee }) => {
         <div className="form-group">
           <label>Description</label>
           <input
+            required
             type="text"
             className="form-control"
             name="description"
@@ -63,6 +70,7 @@ const CoffeeModal = ({ isOpen, closeModal, createCoffee }) => {
         <div className="form-group">
           <label>Image</label>
           <input
+            required
             type="text"
             className="form-control"
             name="image"
@@ -77,4 +85,4 @@ const CoffeeModal = ({ isOpen, closeModal, createCoffee }) => {
   );
 };
 
-export default CoffeeModal;
+export default observer(CoffeeModal);
