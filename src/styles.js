@@ -130,3 +130,8 @@ export const Search = styled.input`
   display: block;
   width: 40%;
 `;
+
+export const UpdateButtonStyled = styled.p`
+  color: ${(props) => props.theme.red};
+  text-align: center;
+`;

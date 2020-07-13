@@ -8,13 +8,15 @@ import coffeeStore from "../../stores/coffeeStore";
 //Styling
 import { CreateButtonStyled } from "../../styles";
 
-const CoffeeModal = ({ isOpen, closeModal }) => {
-  const [coffee, setCoffee] = useState({
-    name: "",
-    price: 0,
-    description: "",
-    image: "",
-  });
+const CoffeeModal = ({ isOpen, closeModal, oldCoffee }) => {
+  const [coffee, setCoffee] = useState(
+    oldCoffee ?? {
+      name: "",
+      price: 0,
+      description: "",
+      image: "",
+    }
+  );
 
   const handleChange = (event) => {
     setCoffee({ ...coffee, [event.target.name]: event.target.value });
@@ -22,7 +24,7 @@ const CoffeeModal = ({ isOpen, closeModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    coffeeStore.createCoffee(coffee);
+    coffeeStore[oldCoffee ? "updateCoffee" : "createCoffee"](coffee);
     closeModal();
   };
 
@@ -42,6 +44,7 @@ const CoffeeModal = ({ isOpen, closeModal }) => {
               type="text"
               className="form-control"
               name="name"
+              value={coffee.name}
               onChange={handleChange}
             />
           </div>
@@ -53,6 +56,7 @@ const CoffeeModal = ({ isOpen, closeModal }) => {
               min="1"
               className="form-control"
               name="price"
+              value={coffee.price}
               onChange={handleChange}
             />
           </div>
@@ -64,6 +68,7 @@ const CoffeeModal = ({ isOpen, closeModal }) => {
             type="text"
             className="form-control"
             name="description"
+            value={coffee.description}
             onChange={handleChange}
           />
         </div>
@@ -74,11 +79,12 @@ const CoffeeModal = ({ isOpen, closeModal }) => {
             type="text"
             className="form-control"
             name="image"
+            value={coffee.image}
             onChange={handleChange}
           />
         </div>
         <CreateButtonStyled type="submit" className="btn float-right">
-          Create
+          {oldCoffee ? "Update" : "Create"}
         </CreateButtonStyled>
       </form>
     </Modal>

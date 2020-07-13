@@ -7,6 +7,13 @@ import coffees from "../coffees";
 class CoffeeStore {
   coffees = coffees;
 
+  updateCoffee = (updatedCoffee) => {
+    const coffee = this.coffees.find(
+      (coffee) => coffee.id === updatedCoffee.id
+    );
+    for (const key in coffee) coffee[key] = updatedCoffee[key];
+  };
+
   createCoffee = (newCoffee) => {
     newCoffee.id = this.coffees[this.coffees.length - 1].id + 1;
     newCoffee.slug = slugify(newCoffee.name);

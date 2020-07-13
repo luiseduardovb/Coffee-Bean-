@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { observer } from "mobx-react";
 
 //Componenets
 import DeleteButton from "./buttons/DeleteButton";
+import UpdateButton from "./buttons/UpdateButton";
 
 //Styling
 import { CoffeeWraper } from "../styles";
@@ -15,9 +17,10 @@ const CoffeeItem = ({ coffee }) => {
       </Link>
       <p>{coffee.name}</p>
       <p className="coffee-price">{coffee.price} KD</p>
+      <UpdateButton coffee={coffee} />
       <DeleteButton coffeeId={coffee.id} />
     </CoffeeWraper>
   );
 };
 
-export default CoffeeItem;
+export default observer(CoffeeItem);
