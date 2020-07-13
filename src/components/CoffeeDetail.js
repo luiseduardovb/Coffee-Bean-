@@ -4,6 +4,7 @@ import { observer } from "mobx-react";
 
 //Componenets
 import DeleteButton from "./buttons/DeleteButton";
+import UpdateButton from "./buttons/UpdateButton";
 
 //Stores
 import coffeeStore from "../stores/coffeeStore";
@@ -26,10 +27,12 @@ const CoffeeDetail = () => {
         <Link to="/coffees">
           <p>Back to Coffees</p>
         </Link>
+
         <h1>{coffee.name}</h1>
         <img src={coffee.image} alt={coffee.name} />
         <p>{coffee.description}</p>
         <p>{coffee.price}</p>
+        <UpdateButton coffee={coffee} />
         <DeleteButton coffeeId={coffee.id} />
       </DetailWrapper>
     </div>

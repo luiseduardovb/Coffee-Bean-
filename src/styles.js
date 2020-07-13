@@ -133,5 +133,4 @@ export const Search = styled.input`
 
 export const UpdateButtonStyled = styled.p`
   color: ${(props) => props.theme.red};
-  text-align: center;
 `;
