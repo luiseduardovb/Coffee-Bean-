@@ -13,11 +13,19 @@ class CoffeeStore {
     }
   };
 
-  updateCoffee = (updatedCoffee) => {
-    const coffee = this.coffees.find(
-      (coffee) => coffee.id === updatedCoffee.id
-    );
-    for (const key in coffee) coffee[key] = updatedCoffee[key];
+  updateCoffee = async (updatedCoffee) => {
+    try {
+      await axios.put(
+        `http://localhost:8000/coffees/${updatedCoffee.id}`,
+        updatedCoffee
+      );
+      const coffee = this.coffees.find(
+        (coffee) => coffee.id === updatedCoffee.id
+      );
+      for (const key in coffee) coffee[key] = updatedCoffee[key];
+    } catch (error) {
+      console.log("CoffeeStore -> updatedCoffee-> error", error);
+    }
   };
 
   createCoffee = async (newCoffee) => {
