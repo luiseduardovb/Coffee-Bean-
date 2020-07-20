@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import CoffeeModal from "../modals/CoffeeModal";
 
 //Styling
-import { AddButtonStyled } from "../../styles";
+import { AddButtonStyled } from "./styles";
 
 const AddButton = ({ createCoffee }) => {
   const [isOpen, setIsOpen] = useState(false);

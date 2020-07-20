@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 import coffeeStore from "../../stores/coffeeStore";
 
 //Styling
-import { DeleteButtonStyled } from "../../styles";
+import { DeleteButtonStyled } from "./styles";
 
 const DeleteButton = ({ coffeeId }) => {
   const handleDelete = () => {

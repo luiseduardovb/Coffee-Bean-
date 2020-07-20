@@ -3,14 +3,14 @@ import { Link, Redirect, useParams } from "react-router-dom";
 import { observer } from "mobx-react";
 
 //Componenets
-import DeleteButton from "./buttons/DeleteButton";
-import UpdateButton from "./buttons/UpdateButton";
+import DeleteButton from "../buttons/DeleteButton";
+import UpdateButton from "../buttons/UpdateButton";
 
 //Stores
-import coffeeStore from "../stores/coffeeStore";
+import coffeeStore from "../../stores/coffeeStore";
 
 //Styling
-import { DetailWrapper } from "../styles";
+import { DetailWrapper } from "./styles";
 
 const CoffeeDetail = () => {
   const { coffeeSlug } = useParams();

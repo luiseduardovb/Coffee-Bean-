@@ -1,5 +1,4 @@
 import { decorate, observable } from "mobx";
-import slugify from "react-slugify";
 import axios from "axios";
 
 class CoffeeStore {
@@ -21,10 +20,13 @@ class CoffeeStore {
     for (const key in coffee) coffee[key] = updatedCoffee[key];
   };
 
-  createCoffee = (newCoffee) => {
-    newCoffee.id = this.coffees[this.coffees.length - 1].id + 1;
-    newCoffee.slug = slugify(newCoffee.name);
-    this.coffees.push(newCoffee);
+  createCoffee = async (newCoffee) => {
+    try {
+      const res = await axios.post("http://localhost:8000/coffees", newCoffee);
+      this.coffees.push(res.data);
+    } catch (error) {
+      console.log("CoffeeStore -> createCoffee -> error", error);
+    }
   };
 
   deleteCoffee = async (coffeeId) => {

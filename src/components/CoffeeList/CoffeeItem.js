@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
 
 //Componenets
-import DeleteButton from "./buttons/DeleteButton";
-import UpdateButton from "./buttons/UpdateButton";
+import DeleteButton from "../buttons/DeleteButton";
+import UpdateButton from "../buttons/UpdateButton";
 
 //Styling
-import { CoffeeWraper } from "../styles";
+import { CoffeeWraper } from "./styles";
 
 const CoffeeItem = ({ coffee }) => {
   return (

@@ -1,9 +1,9 @@
 import React from "react";
 
 //Styling
-import { Logo, NavItem, NavStyled, ThemeButton } from "../styles";
-import lightlogo from "../light-logo.png";
-import darklogo from "../dark-logo.png";
+import { Logo, NavItem, NavStyled, ThemeButton } from "./styles";
+import lightlogo from "../../../src/light-logo.png";
+import darklogo from "../../../src/dark-logo.png";
 
 const NavBar = (props) => {
   return (

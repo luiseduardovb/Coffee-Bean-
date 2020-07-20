@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Route, Switch } from "react-router";
 
 //Components
-import CoffeeList from "./components/CoffeeList";
 import CoffeeDetail from "./components/CoffeeDetail";
-import Home from "./components/Home";
+import CoffeeList from "./components/CoffeeList";
+import Home from "./components/Home/index";
 import NavBar from "./components/NavBar";
 
 //Styling

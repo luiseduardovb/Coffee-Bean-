@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { observer } from "mobx-react";
 
 // Components
-import AddButton from "./buttons/AddButton";
+import AddButton from "../buttons/AddButton";
 import CoffeeItem from "./CoffeeItem";
-import SearchBar from "./SearchBar";
+import SearchBar from "../SearchBar";
 
 //Stores
-import coffeeStore from "../stores/coffeeStore";
+import coffeeStore from "../../stores/coffeeStore";
 
 // Styling
-import { ListWrapper } from "../styles";
+import { ListWrapper } from "./styles";
 
 const CoffeeList = () => {
   const [query, setQuery] = useState("");
