@@ -10,8 +10,8 @@ const NavBar = (props) => {
     <NavStyled className="navbar navbar-expand-lg">
       <Logo className="navbar-brand" to="/">
         <img
-          src={props.currentTheme === "lightTheme" ? lightlogo : darklogo}
-          alt="lightlogo"
+          src={props.currentTheme === "light" ? lightlogo : darklogo}
+          alt="light"
         />
       </Logo>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -20,7 +20,7 @@ const NavBar = (props) => {
             Coffees
           </NavItem>
           <ThemeButton className="nav-item" onClick={props.toggleTheme}>
-            {props.currentTheme === "lightTheme" ? "Dark Mode" : "Light Mode"}
+            {props.currentTheme === "light" ? "Dark Mode" : "Light Mode"}
           </ThemeButton>
         </div>
       </div>

@@ -6,7 +6,7 @@ import { observer } from "mobx-react";
 import coffeeStore from "../../stores/coffeeStore";
 
 //Styling
-import { CreateButtonStyled } from "../../styles";
+import { CreateButtonStyled } from "./styles";
 
 const CoffeeModal = ({ isOpen, closeModal, oldCoffee }) => {
   const [coffee, setCoffee] = useState(

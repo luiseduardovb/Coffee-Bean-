@@ -1,11 +1,18 @@
 import { decorate, observable } from "mobx";
 import slugify from "react-slugify";
-
-//Data
-import coffees from "../coffees";
+import axios from "axios";
 
 class CoffeeStore {
-  coffees = coffees;
+  coffees = [];
+
+  fetchCoffees = async () => {
+    try {
+      const res = await axios.get("http://localhost:8000/coffees");
+      this.coffees = res.data;
+    } catch (error) {
+      console.error("CoffeeStore -> fetchCoffees-> error", error);
+    }
+  };
 
   updateCoffee = (updatedCoffee) => {
     const coffee = this.coffees.find(
@@ -20,13 +27,19 @@ class CoffeeStore {
     this.coffees.push(newCoffee);
   };
 
-  deleteCoffee = (coffeeId) => {
-    this.coffees = this.coffees.filter((coffee) => coffee.id !== coffeeId);
+  deleteCoffee = async (coffeeId) => {
+    try {
+      await axios.delete(`http://localhost:8000/coffees/${coffeeId}`);
+      this.coffees = this.coffees.filter((coffee) => coffee.id !== coffeeId);
+    } catch (error) {
+      console.log("CoffeeStore -> deleteCoffee -> error", error);
+    }
   };
 }
 
 decorate(CoffeeStore, { coffees: observable });
 
 const coffeeStore = new CoffeeStore();
+coffeeStore.fetchCoffees();
 
 export default coffeeStore;
