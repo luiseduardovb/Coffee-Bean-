@@ -8,9 +8,10 @@ import coffeeStore from "../../stores/coffeeStore";
 //Styling
 import { CreateButtonStyled } from "./styles";
 
-const CoffeeModal = ({ isOpen, closeModal, oldCoffee }) => {
+const CoffeeModal = ({ isOpen, closeModal, oldCoffee, vendor }) => {
   const [coffee, setCoffee] = useState(
     oldCoffee ?? {
+      vendorId: vendor.id,
       name: "",
       price: 0,
       description: "",
@@ -22,9 +23,13 @@ const CoffeeModal = ({ isOpen, closeModal, oldCoffee }) => {
     setCoffee({ ...coffee, [event.target.name]: event.target.value });
   };
 
+  const handleImage = (event) => {
+    setCoffee({ ...coffee, image: event.target.files[0] });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    coffeeStore[oldCoffee ? "updateCoffee" : "createCoffee"](coffee);
+    coffeeStore[oldCoffee ? "updateCoffee" : "createCoffee"](coffee, vendor);
     closeModal();
   };
 
@@ -76,11 +81,10 @@ const CoffeeModal = ({ isOpen, closeModal, oldCoffee }) => {
           <label>Image</label>
           <input
             required
-            type="text"
+            type="file"
             className="form-control"
             name="image"
-            value={coffee.image}
-            onChange={handleChange}
+            onChange={handleImage}
           />
         </div>
         <CreateButtonStyled type="submit" className="btn float-right">

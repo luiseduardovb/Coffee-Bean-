@@ -1,29 +1,31 @@
 import React, { useState } from "react";
-import { Route, Switch } from "react-router";
+import { observer } from "mobx-react";
 
 //Components
-import CoffeeDetail from "./components/CoffeeDetail";
-import CoffeeList from "./components/CoffeeList";
-import Home from "./components/Home/index";
 import NavBar from "./components/NavBar";
+import Routes from "./components/Routes";
 
 //Styling
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "./styles";
+import { GlobalStyle, LoadingStyled } from "./styles";
+import vendorStore from "./stores/vendorStore";
+import coffeeStore from "./stores/coffeeStore";
 
 const theme = {
   light: {
-    mainColor: "#27282f",
-    backgroundColor: "#a8b4c6",
+    mainColor: "#ffffff",
+    backgroundColor: "#F64C72",
     some: "#19477b",
     red: "#E12F21",
+    white: "#ffffff",
   },
 
   dark: {
-    mainColor: "#d0d1d5",
-    backgroundColor: "#27282f",
+    mainColor: "#ffffff",
+    backgroundColor: "#1e2ca9",
     some: "#083358",
     red: "#E12F21",
+    white: "#ffffff",
   },
 };
 
@@ -40,19 +42,13 @@ function App() {
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
       <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
-      <Switch>
-        <Route path="/coffees/:coffeeSlug">
-          <CoffeeDetail />
-        </Route>
-        <Route path="/coffees">
-          <CoffeeList />
-        </Route>
-        <Route exact path="/">
-          <Home />
-        </Route>
-      </Switch>
+      {vendorStore.loading || coffeeStore.loading ? (
+        <LoadingStyled />
+      ) : (
+        <Routes />
+      )}
     </ThemeProvider>
   );
 }
 
-export default App;
+export default observer(App);

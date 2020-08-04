@@ -5,8 +5,9 @@ import CoffeeModal from "../modals/CoffeeModal";
 
 //Styling
 import { AddButtonStyled } from "./styles";
+import VendorModal from "../modals/VendorModal";
 
-const AddButton = ({ createCoffee }) => {
+const AddButton = ({ vendor }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -17,11 +18,11 @@ const AddButton = ({ createCoffee }) => {
         className="float-right"
         onClick={() => setIsOpen(true)}
       />
-      <CoffeeModal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        createCoffee={createCoffee}
-      />
+      {vendor ? (
+        <CoffeeModal isOpen={isOpen} closeModal={closeModal} vendor={vendor} />
+      ) : (
+        <VendorModal isOpen={isOpen} closeModal={closeModal} />
+      )}
     </>
   );
 };

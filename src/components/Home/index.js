@@ -1,7 +1,8 @@
 import React from "react";
 
 //Styling
-import { Title, Description, CoffeeImage } from "./styles";
+import { Description, CoffeeImage } from "./styles";
+import { Title } from "../../styles";
 
 const Home = () => {
   return (

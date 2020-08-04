@@ -10,7 +10,15 @@ import UpdateButton from "../buttons/UpdateButton";
 import coffeeStore from "../../stores/coffeeStore";
 
 //Styling
-import { DetailWrapper } from "./styles";
+import {
+  DescriptionWrapper,
+  DetailWrapper,
+  ImageWrapper,
+  NameWrapper,
+  PriceWrapper,
+  UpdateWrapper,
+} from "./styles";
+import { BackButtonStyled } from "../buttons/styles";
 
 const CoffeeDetail = () => {
   const { coffeeSlug } = useParams();
@@ -23,17 +31,36 @@ const CoffeeDetail = () => {
 
   return (
     <div>
-      <DetailWrapper>
-        <Link to="/coffees">
-          <p>Back to Coffees</p>
-        </Link>
-
-        <h1>{coffee.name}</h1>
-        <img src={coffee.image} alt={coffee.name} />
-        <p>{coffee.description}</p>
-        <p>{coffee.price}</p>
-        <UpdateButton coffee={coffee} />
-        <DeleteButton coffeeId={coffee.id} />
+      <DetailWrapper className="container-fluid">
+        <div className="row">
+          <div className="col-sm">
+            <div className="row">
+              <Link to="/coffees">
+                <BackButtonStyled />
+              </Link>
+            </div>
+            <ImageWrapper src={coffee.image} alt={coffee.name} />
+            <div className="row">
+              <div className="col">
+                <DeleteButton coffeeId={coffee.id} />
+              </div>
+            </div>
+          </div>
+          <div className="col-sm">
+            <NameWrapper className="row">
+              <h3>{coffee.name}</h3>
+              <UpdateWrapper className="col">
+                <UpdateButton coffee={coffee} />
+              </UpdateWrapper>
+            </NameWrapper>
+            <DescriptionWrapper className="row">
+              <p>{coffee.description}</p>
+            </DescriptionWrapper>
+            <PriceWrapper className="row">
+              <p>{`Price: ${coffee.price} KD `}</p>
+            </PriceWrapper>
+          </div>
+        </div>
       </DetailWrapper>
     </div>
   );

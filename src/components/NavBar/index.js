@@ -16,6 +16,9 @@ const NavBar = (props) => {
       </Logo>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
+          <NavItem className="nav-item" to="/vendors">
+            Vendors
+          </NavItem>
           <NavItem className="nav-item" to="/coffees">
             Coffees
           </NavItem>
