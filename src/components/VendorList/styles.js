@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const VendorItemImage = styled.img`
-  width: 10em;
-  height: 5em;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const VendorsInfoRow = styled.div`
@@ -22,7 +23,6 @@ export const CustomCol = styled.div`
 
 export const VendorBox = styled.div`
   background-color: white;
-  // background-image: url("https://www.freeiconspng.com/uploads/icon-request-check-money-bank-check-cheque---issue-2603--14.png");
   padding: 25px 20px 25px 20px;
   background-position: 12px center;
   background-size: auto 90px;
@@ -54,11 +54,10 @@ export const PageTitle = styled.h3`
   margin-top: 0;
 `;
 export const StyledP = styled.p`
-  font-size: 10px;
-  margin-bottom: 20px;
-  color: blue;
-  font-family: inherit;
+  font-size: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: black;
   font-weight: 500;
   line-height: 1.2;
-  margin-top: 0;
 `;

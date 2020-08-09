@@ -1,5 +1,8 @@
 import React from "react";
 
+//Components
+import SignupButton from "../buttons/SignupButton";
+
 //Styling
 import { Logo, NavItem, NavStyled, ThemeButton } from "./styles";
 import lightlogo from "../../../src/light-logo.png";
@@ -22,6 +25,7 @@ const NavBar = (props) => {
           <NavItem className="nav-item" to="/coffees">
             Coffees
           </NavItem>
+          <SignupButton />
           <ThemeButton className="nav-item" onClick={props.toggleTheme}>
             {props.currentTheme === "light" ? "Dark Mode" : "Light Mode"}
           </ThemeButton>

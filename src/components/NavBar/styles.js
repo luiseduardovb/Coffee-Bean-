@@ -21,7 +21,7 @@ export const NavItem = styled(NavLink)`
 `;
 
 export const NavStyled = styled.nav`
-  background-color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.some};
 `;
 
 export const ThemeButton = styled.button`
