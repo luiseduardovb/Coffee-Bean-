@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import { observer } from "mobx-react";
 import { CreateButtonStyled } from "./styles";
 import authStore from "../../stores/authStore";
+import { RiCheckboxBlankCircleLine } from "react-icons/ri";
 
 const SignupModal = ({ isOpen, closeModal }) => {
   const [user, setUser] = useState({
@@ -22,11 +23,23 @@ const SignupModal = ({ isOpen, closeModal }) => {
     closeModal();
   };
 
+  const modalStyle = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%,-50%)",
+      color: "#000000",
+    },
+  };
+
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={closeModal}
-      //   style={modalStyle}
+      style={modalStyle}
       contentLabel="Example Modal"
     >
       <h3>Signup</h3>
@@ -68,7 +81,7 @@ const SignupModal = ({ isOpen, closeModal }) => {
           <input
             name="email"
             value={user.email}
-            type="text"
+            type="email"
             className="form-control"
             onChange={handleChange}
           />
