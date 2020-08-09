@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { observer } from "mobx-react";
 import { CreateButtonStyled } from "./styles";
+import authStore from "../../stores/authStore";
 
 const SignupModal = ({ isOpen, closeModal }) => {
   const [user, setUser] = useState({
@@ -15,6 +16,12 @@ const SignupModal = ({ isOpen, closeModal }) => {
   const handleChange = (event) =>
     setUser({ ...user, [event.target.name]: event.target.value });
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    authStore.signup(user);
+    closeModal();
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -23,7 +30,7 @@ const SignupModal = ({ isOpen, closeModal }) => {
       contentLabel="Example Modal"
     >
       <h3>Signup</h3>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Username</label>
           <input
