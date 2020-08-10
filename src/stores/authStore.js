@@ -1,12 +1,22 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
+
+import instance from "./instance";
 
 class AuthStore {
   signup = async (userData) => {
     try {
-      await axios.post("http://localhost:8000/signup", userData);
+      await instance.post("/signup", userData);
     } catch (error) {
       console.log("AuthStore -> signup -> error", error);
+    }
+  };
+
+  signin = async (userData) => {
+    try {
+      const res = await instance.post("/signin", userData);
+      console.log("authStore -> signin -> res.data", res.data);
+    } catch (error) {
+      console.log("AuthStore -> signin -> error", error);
     }
   };
 }

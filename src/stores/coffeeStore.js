@@ -1,5 +1,5 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
+import instance from "./instance";
 
 class CoffeeStore {
   coffees = [];
@@ -7,7 +7,7 @@ class CoffeeStore {
 
   fetchCoffees = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/coffees");
+      const res = await instance.get("/coffees");
       this.coffees = res.data;
       this.loading = false;
     } catch (error) {
@@ -24,10 +24,7 @@ class CoffeeStore {
       //update in backend
       const formData = new FormData();
       for (const key in updatedCoffee) formData.append(key, updatedCoffee[key]);
-      await axios.put(
-        `http://localhost:8000/coffees/${updatedCoffee.id}`,
-        formData
-      );
+      await instance.put(`/coffees/${updatedCoffee.id}`, formData);
       //update in frontend
       const coffee = this.coffees.find(
         (coffee) => coffee.id === updatedCoffee.id
@@ -43,8 +40,8 @@ class CoffeeStore {
     try {
       const formData = new FormData();
       for (const key in newCoffee) formData.append(key, newCoffee[key]);
-      const res = await axios.post(
-        `http://localhost:8000/vendors/${vendor.id}/coffees`,
+      const res = await instance.post(
+        `/vendors/${vendor.id}/coffees`,
         formData
       );
       const coffee = res.data;
@@ -58,7 +55,7 @@ class CoffeeStore {
   deleteCoffee = async (coffeeId) => {
     try {
       //delete in the backend
-      await axios.delete(`http://localhost:8000/coffees/${coffeeId}`);
+      await instance.delete(`/coffees/${coffeeId}`);
       //delete in the frontend
       this.coffees = this.coffees.filter((coffee) => coffee.id !== coffeeId);
     } catch (error) {
