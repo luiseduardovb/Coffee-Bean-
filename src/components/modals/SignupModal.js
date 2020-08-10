@@ -3,7 +3,6 @@ import Modal from "react-modal";
 import { observer } from "mobx-react";
 import { CreateButtonStyled } from "./styles";
 import authStore from "../../stores/authStore";
-import { RiCheckboxBlankCircleLine } from "react-icons/ri";
 
 const SignupModal = ({ isOpen, closeModal }) => {
   const [user, setUser] = useState({
@@ -12,6 +11,7 @@ const SignupModal = ({ isOpen, closeModal }) => {
     username: "",
     password: "",
     email: "",
+    role: "vendor",
   });
 
   const handleChange = (event) =>
