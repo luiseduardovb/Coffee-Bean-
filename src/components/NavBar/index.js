@@ -2,6 +2,7 @@ import React from "react";
 
 //Components
 import SignupButton from "../buttons/SignupButton";
+import SigninButton from "../buttons/SigninButton";
 
 //Styling
 import { Logo, NavItem, NavStyled, ThemeButton } from "./styles";
@@ -25,6 +26,7 @@ const NavBar = (props) => {
           <NavItem className="nav-item" to="/coffees">
             Coffees
           </NavItem>
+          <SigninButton />
           <SignupButton />
           <ThemeButton className="nav-item" onClick={props.toggleTheme}>
             {props.currentTheme === "light" ? "Dark Mode" : "Light Mode"}
