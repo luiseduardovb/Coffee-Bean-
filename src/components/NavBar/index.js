@@ -1,4 +1,5 @@
 import React from "react";
+import { observer } from "mobx-react";
 
 //Components
 import SignupButton from "../buttons/SignupButton";
@@ -8,6 +9,7 @@ import SigninButton from "../buttons/SigninButton";
 import { Logo, NavItem, NavStyled, ThemeButton } from "./styles";
 import lightlogo from "../../../src/light-logo.png";
 import darklogo from "../../../src/dark-logo.png";
+import authStore from "../../stores/authStore";
 
 const NavBar = (props) => {
   return (
@@ -18,23 +20,34 @@ const NavBar = (props) => {
           alt="light"
         />
       </Logo>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
-          <NavItem className="nav-item" to="/vendors">
-            Vendors
-          </NavItem>
-          <NavItem className="nav-item" to="/coffees">
-            Coffees
-          </NavItem>
-          <SigninButton />
-          <SignupButton />
+          {authStore.user ? (
+            <p>{`Heloo ${authStore.user.firstName}`}</p>
+          ) : (
+            <>
+              <SigninButton />
+              <SignupButton />
+            </>
+          )}
+          {authStore.user && authStore.user.role === "admin" && (
+            <>
+              <NavItem className="nav-item" to="/vendors">
+                Vendors
+              </NavItem>
+              <NavItem className="nav-item" to="/coffees">
+                Coffees
+              </NavItem>
+            </>
+          )}
+
           <ThemeButton className="nav-item" onClick={props.toggleTheme}>
             {props.currentTheme === "light" ? "Dark Mode" : "Light Mode"}
           </ThemeButton>
         </div>
-      </div>
+      </ul>
     </NavStyled>
   );
 };
 
-export default NavBar;
+export default observer(NavBar);
