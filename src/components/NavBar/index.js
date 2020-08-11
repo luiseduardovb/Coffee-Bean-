@@ -10,6 +10,7 @@ import { Logo, NavItem, NavStyled, ThemeButton } from "./styles";
 import lightlogo from "../../../src/light-logo.png";
 import darklogo from "../../../src/dark-logo.png";
 import authStore from "../../stores/authStore";
+import { FiLogOut } from "react-icons/fi";
 
 const NavBar = (props) => {
   return (
@@ -23,7 +24,10 @@ const NavBar = (props) => {
       <ul className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
           {authStore.user ? (
-            <p>{`Heloo ${authStore.user.firstName}`}</p>
+            <>
+              <p>{`Heloo ${authStore.user.firstName}`}</p>
+              <FiLogOut onClick={authStore.signout} size="2em" color="red" />
+            </>
           ) : (
             <>
               <SigninButton />

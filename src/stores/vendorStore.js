@@ -37,7 +37,7 @@ class VendorStore {
       const formData = new FormData();
       for (const key in newVendor) formData.append(key, newVendor[key]);
       const res = await instance.post("/vendors", formData);
-      this.vendors.push({ ...res.data, coffees: [] }); // try to inderstand it
+      this.vendors.push(res.data); // try to inderstand it
     } catch (error) {
       console.log("VendorStore -> createVendor -> error", error);
     }
