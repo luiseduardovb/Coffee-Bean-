@@ -5,6 +5,8 @@ import { Route, Switch } from "react-router";
 import CoffeeDetail from "../CoffeeDetail";
 import CoffeeList from "../CoffeeList";
 import Home from "../Home";
+import Signin from "../authentication/Signin";
+import Signup from "../authentication/Signup";
 import VendorList from "../VendorList";
 import VendorDetail from "../VendorDetail";
 
@@ -14,6 +16,12 @@ import coffeeStore from "../../stores/coffeeStore";
 const Routes = () => {
   return (
     <Switch>
+      <Route path="/signin">
+        <Signin />
+      </Route>
+      <Route path="/signup">
+        <Signup />
+      </Route>
       <Route path="/vendors/:vendorSlug">
         <VendorDetail />
       </Route>

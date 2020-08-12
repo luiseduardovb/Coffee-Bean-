@@ -13,8 +13,8 @@ import { ListWrapper } from "./styles";
 const CoffeeList = ({ coffees = [] }) => {
   const [query, setQuery] = useState("");
 
-  if (!authStore.user || authStore.user.role !== "admin")
-    return <Redirect to="/" />;
+  // if (!authStore.user || authStore.user.role !== "admin")
+  //   return <Redirect to="/" />;
 
   const coffeeList = coffees
     .filter((coffee) => coffee.name.toLowerCase().includes(query.toLowerCase()))

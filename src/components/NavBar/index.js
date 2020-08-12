@@ -30,8 +30,8 @@ const NavBar = (props) => {
             </>
           ) : (
             <>
-              <SigninButton />
-              <SignupButton />
+              <SigninButton to="/signin" />
+              <SignupButton to="/signup" />
             </>
           )}
           {authStore.user && authStore.user.role === "admin" && (
