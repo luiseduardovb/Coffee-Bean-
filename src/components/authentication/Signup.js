@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { CreateButtonStyled } from "./styles";
 import authStore from "../../stores/authStore";
 
-const SignupModal = ({ isOpen, closeModal }) => {
+const Signup = () => {
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -19,7 +19,6 @@ const SignupModal = ({ isOpen, closeModal }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     authStore.signup(user);
-    closeModal();
   };
 
   return (
@@ -86,4 +85,4 @@ const SignupModal = ({ isOpen, closeModal }) => {
   );
 };
 
-export default observer(SignupModal);
+export default observer(Signup);

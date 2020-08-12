@@ -18,7 +18,7 @@ const Signin = () => {
     authStore.signin(user);
   };
 
-  if (authStore.user)
+  if (authStore.user) {
     return (
       <Redirect
         to={
@@ -28,6 +28,7 @@ const Signin = () => {
         }
       />
     );
+  }
 
   return (
     <>
@@ -48,7 +49,7 @@ const Signin = () => {
           <input
             name="password"
             value={user.password}
-            type="text"
+            type="password"
             className="form-control"
             onChange={handleChange}
           />

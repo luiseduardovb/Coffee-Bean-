@@ -10,7 +10,9 @@ import { Description, CoffeeImage } from "./styles";
 import { Title } from "../../styles";
 
 const Home = () => {
-  if (!authStore.user) return <Redirect to="/" />; // redirect when i add page with both modals
+  if (!authStore.user) return <Redirect to="/signin" />; // redirect when i add page with both modals
+  if (authStore.user.vendorSlug)
+    return <Redirect to={`/vendors/${authStore.user.vendorSlug}`} />;
   return (
     <>
       <Title>Specialty Coffee</Title>

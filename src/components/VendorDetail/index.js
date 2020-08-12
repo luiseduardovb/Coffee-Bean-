@@ -14,18 +14,23 @@ import vendorStore from "../../stores/vendorStore";
 import { DetailWrapper } from "./styles";
 import DeleteButton from "../buttons/DeleteButton";
 import coffeeStore from "../../stores/coffeeStore";
+import authStore from "../../stores/authStore";
 
 const VendorDetail = () => {
   const { vendorSlug } = useParams();
+
+  if (!authStore.user) return <Redirect to="/signin" />;
+
   const vendor = vendorStore.vendors.find(
     (vendor) => vendor.slug === vendorSlug
   );
 
   if (!vendor) return <Redirect to="/vendors" />;
-
   const coffees = vendor.coffees
-    .map((coffee) => coffeeStore.getCoffeeById(coffee.id))
-    .filter((coffee) => coffee);
+    ? vendor.coffees
+        .map((coffee) => coffeeStore.getCoffeeById(coffee.id))
+        .filter((coffee) => coffee)
+    : [];
 
   return (
     <div className="row">
