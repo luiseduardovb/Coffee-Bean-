@@ -1,5 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
+import authStore from "../../stores/authStore";
+
 //Stores
 import coffeeStore from "../../stores/coffeeStore";
 import vendorStore from "../../stores/vendorStore";
@@ -8,11 +10,12 @@ import vendorStore from "../../stores/vendorStore";
 import { DeleteButtonStyled } from "./styles";
 
 const DeleteButton = ({ coffeeId, vendorId }) => {
-  const handleDelete = () => {
-    if (vendorId) {
-      vendorStore.deleteVendor(vendorId);
-    } else {
+  const handleDelete = async () => {
+    if (coffeeId) {
       coffeeStore.deleteCoffee(coffeeId);
+    } else {
+      await vendorStore.deleteVendor(vendorId);
+      authStore.user.vendorSlug = null;
     }
   };
 

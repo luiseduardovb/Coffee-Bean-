@@ -26,6 +26,7 @@ const VendorDetail = () => {
   );
 
   if (!vendor) return <Redirect to="/vendors" />;
+
   const coffees = vendor.coffees
     ? vendor.coffees
         .map((coffee) => coffeeStore.getCoffeeById(coffee.id))
