@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { observer } from "mobx-react";
 import { CreateButtonStyled } from "./styles";
 import authStore from "../../stores/authStore";
+import { Redirect } from "react-router";
 
 const Signup = () => {
   const [user, setUser] = useState({
@@ -20,7 +21,7 @@ const Signup = () => {
     event.preventDefault();
     authStore.signup(user);
   };
-
+  if (authStore.user) return <Redirect to="/" />;
   return (
     <>
       <h3>Signup</h3>

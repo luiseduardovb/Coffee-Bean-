@@ -31,7 +31,7 @@ const NavBar = (props) => {
         <div className="navbar-nav ml-auto">
           {authStore.user ? (
             <>
-              <p>{`Heloo ${authStore.user.firstName}`}</p>
+              <p>{`Helloo ${authStore.user.firstName}`}</p>
               <FiLogOut onClick={authStore.signout} size="2em" color="red" />
             </>
           ) : (
